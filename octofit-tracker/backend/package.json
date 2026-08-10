@@ -1,12 +1,4 @@
 {
-  "name": "octofit-tracker-backend",
-  "private": true,
-  "type": "module",
-  "scripts": {
-    "build": "tsc",
-    "dev": "tsx watch src/index.ts",
-    "start": "node dist/index.js"
-  },
   "dependencies": {
     "cors": "^2.8.6",
     "express": "^5.2.1",
