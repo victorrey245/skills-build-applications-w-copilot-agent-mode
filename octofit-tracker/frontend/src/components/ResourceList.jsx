@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { fetchCollection } from '../api'
 
-export default function ResourceList({ resource, title, description, columns, renderRow }) {
+export default function ResourceList({ resource, endpoint, title, description, columns, renderRow }) {
   const [items, setItems] = useState([])
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(true)
@@ -9,7 +9,7 @@ export default function ResourceList({ resource, title, description, columns, re
   useEffect(() => {
     let active = true
 
-    fetchCollection(resource)
+    fetchCollection(resource, endpoint)
       .then((data) => active && setItems(data))
       .catch((requestError) => active && setError(requestError.message))
       .finally(() => active && setLoading(false))
@@ -17,7 +17,7 @@ export default function ResourceList({ resource, title, description, columns, re
     return () => {
       active = false
     }
-  }, [resource])
+  }, [resource, endpoint])
 
   return (
     <section className="resource-page">
